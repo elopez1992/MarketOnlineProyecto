@@ -52,6 +52,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Class1.cs" />
+    <Compile Include="NCategorias.cs" />
+    <Compile Include="NCliente.cs" />
+    <Compile Include="NCondicionPago.cs" />
+    <Compile Include="NGrupoDescuentos.cs" />
+    <Compile Include="NProductos.cs" />
+    <Compile Include="NUnidadMedida.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
