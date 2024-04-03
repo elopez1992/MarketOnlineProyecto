@@ -53,9 +53,13 @@
   <ItemGroup>
     <Compile Include="BaseDatos\MarketContex.cs" />
     <Compile Include="BaseDatos\Modelos\Categoria.cs" />
+    <Compile Include="BaseDatos\Modelos\Factura.cs" />
+    <Compile Include="BaseDatos\Modelos\FacturaDetalle.cs" />
+    <Compile Include="BaseDatos\Modelos\Pedido.cs" />
     <Compile Include="BaseDatos\Modelos\Cliente.cs" />
     <Compile Include="BaseDatos\Modelos\CondicionPago.cs" />
     <Compile Include="BaseDatos\Modelos\GrupoDescuento.cs" />
+    <Compile Include="BaseDatos\Modelos\PedidoDetalle.cs" />
     <Compile Include="BaseDatos\Modelos\Producto.cs" />
     <Compile Include="BaseDatos\Modelos\UnidadMedida.cs" />
     <Compile Include="Core\IRepository.cs" />
@@ -90,6 +94,22 @@
     <Compile Include="Migrations\202403200438483_AddTablaProductos.designer.cs">
       <DependentUpon>202403200438483_AddTablaProductos.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202404030226497_AdicionTablaPedido.cs" />
+    <Compile Include="Migrations\202404030226497_AdicionTablaPedido.Designer.cs">
+      <DependentUpon>202404030226497_AdicionTablaPedido.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202404030234266_AdicionTablaFactura.cs" />
+    <Compile Include="Migrations\202404030234266_AdicionTablaFactura.Designer.cs">
+      <DependentUpon>202404030234266_AdicionTablaFactura.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202404030241550_AdicionTablaPedidoDetalle.cs" />
+    <Compile Include="Migrations\202404030241550_AdicionTablaPedidoDetalle.Designer.cs">
+      <DependentUpon>202404030241550_AdicionTablaPedidoDetalle.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202404030248303_AdicionFacturaDetalle.cs" />
+    <Compile Include="Migrations\202404030248303_AdicionFacturaDetalle.Designer.cs">
+      <DependentUpon>202404030248303_AdicionFacturaDetalle.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -115,6 +135,18 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202403200438483_AddTablaProductos.resx">
       <DependentUpon>202403200438483_AddTablaProductos.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202404030226497_AdicionTablaPedido.resx">
+      <DependentUpon>202404030226497_AdicionTablaPedido.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202404030234266_AdicionTablaFactura.resx">
+      <DependentUpon>202404030234266_AdicionTablaFactura.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202404030241550_AdicionTablaPedidoDetalle.resx">
+      <DependentUpon>202404030241550_AdicionTablaPedidoDetalle.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202404030248303_AdicionFacturaDetalle.resx">
+      <DependentUpon>202404030248303_AdicionFacturaDetalle.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
