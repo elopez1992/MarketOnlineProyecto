@@ -52,7 +52,44 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BaseDatos\MarketContex.cs" />
-    <Compile Include="Class1.cs" />
+    <Compile Include="BaseDatos\Modelos\Categoria.cs" />
+    <Compile Include="BaseDatos\Modelos\Cliente.cs" />
+    <Compile Include="BaseDatos\Modelos\CondicionPago.cs" />
+    <Compile Include="BaseDatos\Modelos\GrupoDescuento.cs" />
+    <Compile Include="BaseDatos\Modelos\Producto.cs" />
+    <Compile Include="BaseDatos\Modelos\UnidadMedida.cs" />
+    <Compile Include="Core\IRepository.cs" />
+    <Compile Include="Core\Repository.cs" />
+    <Compile Include="DCategorias.cs" />
+    <Compile Include="DClientes.cs" />
+    <Compile Include="DCondicionPago.cs" />
+    <Compile Include="DGrupoDescuentos.cs" />
+    <Compile Include="DProductos.cs" />
+    <Compile Include="DUnidadMedida.cs" />
+    <Compile Include="Migrations\202403200410114_AddTablaCategoria.cs" />
+    <Compile Include="Migrations\202403200410114_AddTablaCategoria.designer.cs">
+      <DependentUpon>202403200410114_AddTablaCategoria.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202403200416305_AddTablaGrupoDescuentos.cs" />
+    <Compile Include="Migrations\202403200416305_AddTablaGrupoDescuentos.designer.cs">
+      <DependentUpon>202403200416305_AddTablaGrupoDescuentos.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202403200419186_AddTabaUnidadMedida.cs" />
+    <Compile Include="Migrations\202403200419186_AddTabaUnidadMedida.designer.cs">
+      <DependentUpon>202403200419186_AddTabaUnidadMedida.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202403200422387_AddTablaCondicionPago.cs" />
+    <Compile Include="Migrations\202403200422387_AddTablaCondicionPago.designer.cs">
+      <DependentUpon>202403200422387_AddTablaCondicionPago.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202403200429419_AddTablaCliente.cs" />
+    <Compile Include="Migrations\202403200429419_AddTablaCliente.designer.cs">
+      <DependentUpon>202403200429419_AddTablaCliente.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202403200438483_AddTablaProductos.cs" />
+    <Compile Include="Migrations\202403200438483_AddTablaProductos.designer.cs">
+      <DependentUpon>202403200438483_AddTablaProductos.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -61,7 +98,24 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="BaseDatos\Modelos\" />
+    <EmbeddedResource Include="Migrations\202403200410114_AddTablaCategoria.resx">
+      <DependentUpon>202403200410114_AddTablaCategoria.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202403200416305_AddTablaGrupoDescuentos.resx">
+      <DependentUpon>202403200416305_AddTablaGrupoDescuentos.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202403200419186_AddTabaUnidadMedida.resx">
+      <DependentUpon>202403200419186_AddTabaUnidadMedida.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202403200422387_AddTablaCondicionPago.resx">
+      <DependentUpon>202403200422387_AddTablaCondicionPago.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202403200429419_AddTablaCliente.resx">
+      <DependentUpon>202403200429419_AddTablaCliente.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202403200438483_AddTablaProductos.resx">
+      <DependentUpon>202403200438483_AddTablaProductos.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
