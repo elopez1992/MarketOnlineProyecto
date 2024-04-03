@@ -29,6 +29,12 @@ namespace Datos.BaseDatos
         public DbSet<CondicionPago> condicionpago { get; set; }
         public DbSet<Cliente> cliente { get; set; }
         public DbSet<Producto> productos { get; set; }
+        public DbSet<Pedido> pedidos { get; set; }
+        public DbSet<Factura> factura { get; set; }
+        public DbSet<PedidoDetalle> pedidosDetalle { get; set; }
+        public DbSet<FacturaDetalle> facturaDetalles { get; set; }
+
+
     }
 
 }
