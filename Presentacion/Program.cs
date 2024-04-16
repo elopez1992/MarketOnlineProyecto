@@ -16,7 +16,7 @@ namespace MarketOnline
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new VistaMenu());
+            Application.Run(new VistaLogin());
         }
     }
 }
