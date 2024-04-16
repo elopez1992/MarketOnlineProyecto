@@ -1,8 +1,10 @@
 ﻿using Datos.BaseDatos.Modelos;
 using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Data.Entity;
 using System.Data.Entity.ModelConfiguration.Conventions;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -23,6 +25,12 @@ namespace Datos.BaseDatos
             modelBuilder.Conventions.Remove<PluralizingTableNameConvention>();
         }
 
+        public SqlConnection GetConexion()
+        {
+            SqlConnection SqlCon = new SqlConnection(ConfigurationManager.ConnectionStrings["MarketOnline"].ToString());
+            return SqlCon;
+        }
+
         public DbSet<Categoria> categorias { get; set; }
         public DbSet<GrupoDescuento> grupodescuentos { get; set; }
         public DbSet<UnidadMedida> unidadmedidas { get; set; }
@@ -34,7 +42,7 @@ namespace Datos.BaseDatos
         public DbSet<PedidoDetalle> pedidosDetalle { get; set; }
         public DbSet<FacturaDetalle> facturaDetalles { get; set; }
 
-
+        public DbSet<Login> login { get; set; }
     }
 
 }

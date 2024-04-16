@@ -96,6 +96,12 @@
     <Compile Include="VistaGrupoDescuentos.Designer.cs">
       <DependentUpon>VistaGrupoDescuentos.cs</DependentUpon>
     </Compile>
+    <Compile Include="VistaLogin.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="VistaLogin.Designer.cs">
+      <DependentUpon>VistaLogin.cs</DependentUpon>
+    </Compile>
     <Compile Include="VistaMenu.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -152,6 +158,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="VistaGrupoDescuentos.resx">
       <DependentUpon>VistaGrupoDescuentos.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="VistaLogin.resx">
+      <DependentUpon>VistaLogin.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="VistaMenu.resx">
       <DependentUpon>VistaMenu.cs</DependentUpon>

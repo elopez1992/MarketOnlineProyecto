@@ -42,6 +42,7 @@
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml.Linq" />
@@ -56,6 +57,7 @@
     <Compile Include="BaseDatos\Modelos\Categoria.cs" />
     <Compile Include="BaseDatos\Modelos\Factura.cs" />
     <Compile Include="BaseDatos\Modelos\FacturaDetalle.cs" />
+    <Compile Include="BaseDatos\Modelos\Login.cs" />
     <Compile Include="BaseDatos\Modelos\Pedido.cs" />
     <Compile Include="BaseDatos\Modelos\Cliente.cs" />
     <Compile Include="BaseDatos\Modelos\CondicionPago.cs" />
@@ -73,6 +75,7 @@
     <Compile Include="DFactura.cs" />
     <Compile Include="DFacturaDetalles.cs" />
     <Compile Include="DGrupoDescuentos.cs" />
+    <Compile Include="DLogin.cs" />
     <Compile Include="DPedido.cs" />
     <Compile Include="DPedidoDetalle.cs" />
     <Compile Include="DProductos.cs" />
@@ -121,6 +124,10 @@
     <Compile Include="Migrations\202404100451274_AgregarColumnasProductoYCantidad.designer.cs">
       <DependentUpon>202404100451274_AgregarColumnasProductoYCantidad.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202404160425444_AdicionTablaLogin.cs" />
+    <Compile Include="Migrations\202404160425444_AdicionTablaLogin.designer.cs">
+      <DependentUpon>202404160425444_AdicionTablaLogin.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -161,6 +168,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202404100451274_AgregarColumnasProductoYCantidad.resx">
       <DependentUpon>202404100451274_AgregarColumnasProductoYCantidad.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202404160425444_AdicionTablaLogin.resx">
+      <DependentUpon>202404160425444_AdicionTablaLogin.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
