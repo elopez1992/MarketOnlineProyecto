@@ -12,10 +12,11 @@ namespace Datos
 {
     public class DProductos
     {
-        Repository<Producto> _repository;
+        UnitOfWork _unitOfWork;
+
         public DProductos()
         {
-            _repository = new Repository<Producto>();
+            _unitOfWork = new UnitOfWork();
         }
         public int ProductoId { get; set; }
         public string DescripcionProducto { get; set; }
@@ -27,21 +28,21 @@ namespace Datos
 
         public List<Producto> RegistrosTodos()
         {
-            return _repository.Consulta().Include(c => c.categoria)
-                                         .Include(c => c.unidadmedida)
-                                         .ToList();
+            return _unitOfWork.Repository<Producto>().Consulta().Include(c => c.categoria)
+                                      .Include(c => c.unidadmedida)
+                                      .ToList();
         }
 
         public int Guardar(Producto guardar)
         {
             if (guardar.ProductoId == 0)
             {
-                _repository.Agregar(guardar);
-                return 1;
+                _unitOfWork.Repository<Producto>().Agregar(guardar);
+                return _unitOfWork.Guardar();
             }
             else
             {
-                var ActualizarInDB = _repository.Consulta().FirstOrDefault(c => c.ProductoId == guardar.ProductoId);
+                var ActualizarInDB = _unitOfWork.Repository<Producto>().Consulta().FirstOrDefault(c => c.ProductoId == guardar.ProductoId);
 
                 if (ActualizarInDB != null)
                 {
@@ -51,8 +52,8 @@ namespace Datos
                     ActualizarInDB.Estado = guardar.Estado;
                     ActualizarInDB.PrecioCompra = guardar.PrecioCompra;
 
-                    _repository.Editar(ActualizarInDB);
-                    return 1;
+                    _unitOfWork.Repository<Producto>().Editar(ActualizarInDB);
+                    return _unitOfWork.Guardar();
                 }
                 return 0;
             }
@@ -60,12 +61,11 @@ namespace Datos
 
         public int Eliminar(int EliminarPorID)
         {
-            var RegistroInDB = _repository.Consulta().FirstOrDefault(c => c.ProductoId == EliminarPorID);
-
-            if (RegistroInDB != null)
+            var clienteInDb = _unitOfWork.Repository<Producto>().Consulta().FirstOrDefault(c => c.ProductoId == EliminarPorID);
+            if (clienteInDb != null)
             {
-                _repository.Eliminar(RegistroInDB);
-                return 1;
+                _unitOfWork.Repository<Producto>().Eliminar(clienteInDb);
+                return _unitOfWork.Guardar();
             }
             return 0;
         }
