@@ -61,20 +61,13 @@ namespace Datos
         }
 
         public int Eliminar(int EliminarPorID)
-        {
-            try
+        {           
+            var clienteInDb = _unitOfWork.Repository<Producto>().Consulta().FirstOrDefault(c => c.ProductoId == EliminarPorID);
+            if (clienteInDb != null)
             {
-                var clienteInDb = _unitOfWork.Repository<Producto>().Consulta().FirstOrDefault(c => c.ProductoId == EliminarPorID);
-                if (clienteInDb != null)
-                {
-                    _unitOfWork.Repository<Producto>().Eliminar(clienteInDb);
-                    return _unitOfWork.Guardar();
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
+                _unitOfWork.Repository<Producto>().Eliminar(clienteInDb);
+                return _unitOfWork.Guardar();
+            }            
             return 0;
         }
     }
