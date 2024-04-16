@@ -40,7 +40,7 @@ namespace Negocio
 
         public int EliminarCategoria(int categoriaId)
         {
-            return dCategorias.EliminarCategoria(categoriaId);
+            return dCategorias.Eliminar(categoriaId);
         }
 
         public List<Categoria> CategoriasActivas()

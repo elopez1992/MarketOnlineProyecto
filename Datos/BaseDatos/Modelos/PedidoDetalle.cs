@@ -26,7 +26,5 @@ namespace Datos.BaseDatos.Modelos
         public decimal Total { get; set; }
         public decimal SubTotal { get; set; }
         public decimal Descuento { get; set; }
-
-
     }
 }

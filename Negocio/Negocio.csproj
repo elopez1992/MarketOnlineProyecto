@@ -55,7 +55,11 @@
     <Compile Include="NCategorias.cs" />
     <Compile Include="NCliente.cs" />
     <Compile Include="NCondicionPago.cs" />
+    <Compile Include="NFactura.cs" />
+    <Compile Include="NFacturaDetalle.cs" />
     <Compile Include="NGrupoDescuentos.cs" />
+    <Compile Include="NPedido.cs" />
+    <Compile Include="NPedidoDetalle.cs" />
     <Compile Include="NProductos.cs" />
     <Compile Include="NUnidadMedida.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

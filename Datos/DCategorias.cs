@@ -4,6 +4,7 @@ using Datos.Core;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.Data.Entity;
 using System.Linq;
 using System.Runtime.Remoting.Contexts;
 using System.Text;
@@ -14,14 +15,15 @@ namespace Datos
     public class DCategorias
     {
         //private MarketContex context;
-
-        Repository<Categoria> _repository;
+        //Repository<Categoria> _repository;
+        UnitOfWork _unitOfWork;
 
         public DCategorias()
         {
             //context = new MarketContex();
 
-            _repository = new Repository<Categoria>();
+            //_repository = new Repository<Categoria>();
+            _unitOfWork = new UnitOfWork();
         }
 
         public int CategoriaId { get; set; }
@@ -33,7 +35,9 @@ namespace Datos
         public List<Categoria> CategoriaTodas()
         {
             //return context.categorias.ToList();
-            return _repository.Consulta().ToList();
+            //return _repository.Consulta().ToList();
+
+            return _unitOfWork.Repository<Categoria>().Consulta().ToList();
         }
 
         public int GuardarCategoria(Categoria categoria)
@@ -43,44 +47,62 @@ namespace Datos
                 //context.categorias.Add(categoria);
                 //return context.SaveChanges();
 
-                _repository.Agregar(categoria);
-                return 1;
+                //_repository.Agregar(categoria);
+                //return 1;
+
+                _unitOfWork.Repository<Categoria>().Agregar(categoria);
+                return _unitOfWork.Guardar();
             }
             else
             {
                 //var CategoriaInDB = context.categorias.Find(categoria.CategoriaId);
+                //var CategoriaInDB = _repository.Consulta().FirstOrDefault(c=>c.CategoriaId == categoria.CategoriaId);
 
-                var CategoriaInDB = _repository.Consulta().FirstOrDefault(c=>c.CategoriaId == categoria.CategoriaId);
+                var ActualizarInDB = _unitOfWork.Repository<Categoria>().Consulta().FirstOrDefault(c => c.CategoriaId == categoria.CategoriaId);
 
-                if (CategoriaInDB != null)
+                if (ActualizarInDB != null)
                 {
-                    CategoriaInDB.Codigo = categoria.Codigo;
-                    CategoriaInDB.Descripcion = categoria.Descripcion;
-                    CategoriaInDB.Estado = categoria.Estado;
+                    ActualizarInDB.Codigo = categoria.Codigo;
+                    ActualizarInDB.Descripcion = categoria.Descripcion;
+                    ActualizarInDB.Estado = categoria.Estado;
 
-                    _repository.Editar(CategoriaInDB);
-                    return 1;
+                    //_repository.Editar(CategoriaInDB);
+                    //return 1;
 
                     //CategoriaInDB.FechaCreacion = categoria.FechaCreacion;
                     //return context.SaveChanges();
+
+                    _unitOfWork.Repository<Categoria>().Editar(ActualizarInDB);
+                    return _unitOfWork.Guardar();
                 }
                 return 0;
             }
         }
 
-        public int EliminarCategoria(int categoriaId)
+        //public int EliminarCategoria(int categoriaId)
+        //{
+        //    //var CategoriaInDB = context.categorias.Find(categoriaId);
+
+        //    var CategoriaInDB = _repository.Consulta().FirstOrDefault(c => c.CategoriaId == categoriaId);
+
+        //    if (CategoriaInDB != null)
+        //    {
+        //        //context.categorias.Remove(CategoriaInDB);
+        //        //return context.SaveChanges();
+
+        //        _repository.Eliminar(CategoriaInDB);
+        //        return 1;
+        //    }
+        //    return 0;
+        //}
+
+        public int Eliminar(int EliminarPorID)
         {
-            //var CategoriaInDB = context.categorias.Find(categoriaId);
-
-            var CategoriaInDB = _repository.Consulta().FirstOrDefault(c => c.CategoriaId == categoriaId);
-
-            if (CategoriaInDB != null)
+            var registroInDb = _unitOfWork.Repository<Categoria>().Consulta().FirstOrDefault(c => c.CategoriaId == EliminarPorID);
+            if (registroInDb != null)
             {
-                //context.categorias.Remove(CategoriaInDB);
-                //return context.SaveChanges();
-                 
-                _repository.Eliminar(CategoriaInDB);
-                return 1;
+                _unitOfWork.Repository<Categoria>().Eliminar(registroInDb);
+                return _unitOfWork.Guardar();
             }
             return 0;
         }
