@@ -7,17 +7,20 @@ using System.Text;
 using System.Threading.Tasks;
 using System.ComponentModel.DataAnnotations;
 using Datos.Core;
+using System.Data.Entity;
 
 namespace Datos
 {
     //Aqui esta implementado el patron repositorio
     public class DGrupoDescuentos
     {
-        Repository<GrupoDescuento> _repository;
+        //Repository<GrupoDescuento> _repository;
+        UnitOfWork _unitOfWork;
 
         public DGrupoDescuentos()
         {
-            _repository = new Repository<GrupoDescuento>();
+            //_repository = new Repository<GrupoDescuento>();
+            _unitOfWork = new UnitOfWork();
         }
 
         public int GrupoDescuentoId { get; set; }
@@ -29,44 +32,50 @@ namespace Datos
 
         public List<GrupoDescuento> GruposDescuentoTodas()
         {
-            return _repository.Consulta().ToList();
+            //return _repository.Consulta().ToList();
+            return _unitOfWork.Repository<GrupoDescuento>().Consulta().ToList();
         }
 
         public int GuardarGrupoDescuento(GrupoDescuento grupo)
         {
             if (grupo.GrupoDescuentoId == 0)
             {
-                _repository.Agregar(grupo);
-                return 1;
+                //_repository.Agregar(grupo);
+                //return 1;
+                _unitOfWork.Repository<GrupoDescuento>().Agregar(grupo);
+                return _unitOfWork.Guardar();
             }
             else
             {
-                var GrupoDescuentoInDB = _repository.Consulta().FirstOrDefault(c => c.GrupoDescuentoId == grupo.GrupoDescuentoId);
+                var ActualizarInDB = _unitOfWork.Repository<GrupoDescuento>().Consulta().FirstOrDefault(c => c.GrupoDescuentoId == grupo.GrupoDescuentoId);
 
-                if (GrupoDescuentoInDB != null)
+                if (ActualizarInDB != null)
                 {
-                    GrupoDescuentoInDB.Codigo = grupo.Codigo;
-                    GrupoDescuentoInDB.DescripcionGD = grupo.DescripcionGD;
-                    GrupoDescuentoInDB.Estado = grupo.Estado;
-                    GrupoDescuentoInDB.Porcentaje = grupo.Porcentaje;
+                    ActualizarInDB.Codigo = grupo.Codigo;
+                    ActualizarInDB.DescripcionGD = grupo.DescripcionGD;
+                    ActualizarInDB.Estado = grupo.Estado;
+                    ActualizarInDB.Porcentaje = grupo.Porcentaje;
 
-                    _repository.Editar(GrupoDescuentoInDB);
-                    return 1;
+                    //_repository.Editar(GrupoDescuentoInDB);
+                    //return 1;
+
+                    _unitOfWork.Repository<GrupoDescuento>().Editar(ActualizarInDB);
+                    return _unitOfWork.Guardar();
                 }
                 return 0;
             }
         }
 
-        public int EliminarGrupoDescuento(int grupodescuentosID)
+        public int EliminarGrupoDescuento(int EliminarPorID)
         {
-            var GrupoDescuentoInDB = _repository.Consulta().FirstOrDefault(c => c.GrupoDescuentoId == grupodescuentosID);
-
-            if (GrupoDescuentoInDB != null)
+            var registroInDb = _unitOfWork.Repository<GrupoDescuento>().Consulta().FirstOrDefault(c => c.GrupoDescuentoId == EliminarPorID);
+            if (registroInDb != null)
             {
-                _repository.Eliminar(GrupoDescuentoInDB);
-                return 1;
+                _unitOfWork.Repository<GrupoDescuento>().Eliminar(registroInDb);
+                return _unitOfWork.Guardar();
             }
             return 0;
         }
     }
+    
 }

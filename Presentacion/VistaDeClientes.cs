@@ -11,13 +11,13 @@ using System.Windows.Forms;
 
 namespace MarketOnline
 {
-    public partial class VistaCliente : Form
+    public partial class VistaDeClientes : Form
     {
         private NCliente nVariable;
         private NGrupoDescuentos nGrupo;
         private NCondicionPago nCondicion;
 
-        public VistaCliente()
+        public VistaDeClientes()
         {
             InitializeComponent();
             nVariable = new NCliente();
@@ -25,19 +25,18 @@ namespace MarketOnline
             nCondicion = new NCondicionPago();
         }
 
-        private void VistaCliente_Load(object sender, EventArgs e)
+        private void VistaDeClientes_Load(object sender, EventArgs e)
         {
             CargarDatos();
             CargarCombobox();
         }
-
         private void CargarDatos()
         {
             var grupo = nVariable.obtenerClientes().Select(c => new { c.ClienteId, c.Codigo, c.Nombres, c.Apellidos, c.Estado, /*c.GrupoDescuentoId,*/ c.grupodescuento.DescripcionGD, /*c.CondicionPagoId,*/ c.condionpago.DescripcionCP, c.FechaCreacion });
 
             DGVDatos.DataSource = grupo.ToList();
 
-            btnPedidos.Visible = false;
+            //btnPedidos.Visible = false;
         }
 
         private void CargarCombobox()
@@ -119,7 +118,6 @@ namespace MarketOnline
             CargarDatos();
             LimpiarDatos();
         }
-
         private void LimpiarDatos()
         {
             txtID.Clear();
@@ -148,7 +146,6 @@ namespace MarketOnline
             cmbDescuento.Text = DGVDatos.CurrentRow.Cells["DescripcionGD"].Value.ToString();
             cmbPagos.Text = DGVDatos.CurrentRow.Cells["DescripcionCP"].Value.ToString();
             chkEstado.Checked = estado;
-            btnPedidos.Visible = true;
         }
 
         private void btnEliminar_Click(object sender, EventArgs e)
@@ -164,7 +161,7 @@ namespace MarketOnline
             LimpiarDatos();
         }
 
-        private void rbTodas_CheckedChanged(object sender, EventArgs e)
+        private void rbTodos_CheckedChanged(object sender, EventArgs e)
         {
             CargarDatos();
         }
@@ -177,16 +174,6 @@ namespace MarketOnline
         private void rbInactivas_CheckedChanged(object sender, EventArgs e)
         {
             DGVDatos.DataSource = nVariable.RegistrosInactivos();
-        }
-
-        private void btnPedidos_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void VistaCliente_Load_1(object sender, EventArgs e)
-        {
-
         }
     }
 }
