@@ -7,6 +7,7 @@ using System.Data.Entity;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace Datos
 {
@@ -61,11 +62,18 @@ namespace Datos
 
         public int Eliminar(int EliminarPorID)
         {
-            var clienteInDb = _unitOfWork.Repository<Producto>().Consulta().FirstOrDefault(c => c.ProductoId == EliminarPorID);
-            if (clienteInDb != null)
+            try
             {
-                _unitOfWork.Repository<Producto>().Eliminar(clienteInDb);
-                return _unitOfWork.Guardar();
+                var clienteInDb = _unitOfWork.Repository<Producto>().Consulta().FirstOrDefault(c => c.ProductoId == EliminarPorID);
+                if (clienteInDb != null)
+                {
+                    _unitOfWork.Repository<Producto>().Eliminar(clienteInDb);
+                    return _unitOfWork.Guardar();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
             }
             return 0;
         }

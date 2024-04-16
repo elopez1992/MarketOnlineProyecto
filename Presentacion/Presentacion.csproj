@@ -140,6 +140,7 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <EmbeddedResource Include="VistaCategoria.resx">
       <DependentUpon>VistaCategoria.cs</DependentUpon>
@@ -200,6 +201,33 @@
       <Project>{af88a52e-aeb2-4c8b-975c-d554ab35e999}</Project>
       <Name>Negocio</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\add_circle_create_expand_new_plus_icon_123218.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\bank_bill_finance_invoice_money_payment_receipt_icon_123239.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\viewdetails_vista_3354.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\trash_bin_icon-icons.com_67981.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\save_regular_icon_202765.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Save_icon-icons.com_55820.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\biggarbagebin_121980.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\1904674-accept-approved-check-checked-confirm-done-tick_122524.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\1904674-accept-approved-check-checked-confirm-done-tick_1225241.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
