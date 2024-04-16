@@ -78,6 +78,18 @@
     <Compile Include="VistaCondicionPagos.Designer.cs">
       <DependentUpon>VistaCondicionPagos.cs</DependentUpon>
     </Compile>
+    <Compile Include="VistaDeClientes.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="VistaDeClientes.Designer.cs">
+      <DependentUpon>VistaDeClientes.cs</DependentUpon>
+    </Compile>
+    <Compile Include="VistaFacturas.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="VistaFacturas.Designer.cs">
+      <DependentUpon>VistaFacturas.cs</DependentUpon>
+    </Compile>
     <Compile Include="VistaGrupoDescuentos.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -89,6 +101,18 @@
     </Compile>
     <Compile Include="VistaMenu.Designer.cs">
       <DependentUpon>VistaMenu.cs</DependentUpon>
+    </Compile>
+    <Compile Include="VistaPedidoDetalle.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="VistaPedidoDetalle.Designer.cs">
+      <DependentUpon>VistaPedidoDetalle.cs</DependentUpon>
+    </Compile>
+    <Compile Include="VistaPedidos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="VistaPedidos.Designer.cs">
+      <DependentUpon>VistaPedidos.cs</DependentUpon>
     </Compile>
     <Compile Include="VistaProductos.cs">
       <SubType>Form</SubType>
@@ -120,11 +144,23 @@
     <EmbeddedResource Include="VistaCondicionPagos.resx">
       <DependentUpon>VistaCondicionPagos.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="VistaDeClientes.resx">
+      <DependentUpon>VistaDeClientes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="VistaFacturas.resx">
+      <DependentUpon>VistaFacturas.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="VistaGrupoDescuentos.resx">
       <DependentUpon>VistaGrupoDescuentos.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="VistaMenu.resx">
       <DependentUpon>VistaMenu.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="VistaPedidoDetalle.resx">
+      <DependentUpon>VistaPedidoDetalle.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="VistaPedidos.resx">
+      <DependentUpon>VistaPedidos.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="VistaProductos.resx">
       <DependentUpon>VistaProductos.cs</DependentUpon>

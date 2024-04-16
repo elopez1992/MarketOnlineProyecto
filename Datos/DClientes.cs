@@ -12,10 +12,12 @@ namespace Datos
 {
     public class DClientes
     {
-        Repository<Cliente> _repository;
+        //Repository<Cliente> _repository;
+        UnitOfWork _unitOfWork;
         public DClientes()
         {
-            _repository = new Repository<Cliente>();
+            //_repository = new Repository<Cliente>();
+            _unitOfWork = new UnitOfWork();
         }
 
         public int ClienteId { get; set; }
@@ -29,21 +31,25 @@ namespace Datos
 
         public List<Cliente> RegistrosTodos()
         {
-            return _repository.Consulta().Include(c => c.grupodescuento)
+            /*return _repository.Consulta().Include(c => c.grupodescuento)
                                          .Include(c => c.condionpago)
-                                         .ToList();
+                                         .ToList();*/
+
+            return _unitOfWork.Repository<Cliente>().Consulta().Include(c => c.grupodescuento)
+                                      .Include(c => c.condionpago)
+                                      .ToList();
         }
 
         public int Guardar(Cliente guardar)
         {
             if (guardar.ClienteId == 0)
             {
-                _repository.Agregar(guardar);
-                return 1;
+                _unitOfWork.Repository<Cliente>().Agregar(guardar);
+                return _unitOfWork.Guardar();
             }
             else
             {
-                var ActualizarInDB = _repository.Consulta().FirstOrDefault(c => c.ClienteId == guardar.ClienteId);
+                var ActualizarInDB = _unitOfWork.Repository<Cliente>().Consulta().FirstOrDefault(c => c.ClienteId == guardar.ClienteId);
 
                 if (ActualizarInDB != null)
                 {
@@ -54,8 +60,8 @@ namespace Datos
                     ActualizarInDB.CondicionPagoId = guardar.CondicionPagoId;
                     ActualizarInDB.Estado = guardar.Estado;
 
-                    _repository.Editar(ActualizarInDB);
-                    return 1;
+                    _unitOfWork.Repository<Cliente>().Editar(ActualizarInDB);
+                    return _unitOfWork.Guardar();
                 }
                 return 0;
             }
@@ -63,12 +69,11 @@ namespace Datos
 
         public int Eliminar(int EliminarPorID)
         {
-            var RegistroInDB = _repository.Consulta().FirstOrDefault(c => c.ClienteId == EliminarPorID);
-
-            if (RegistroInDB != null)
+            var clienteInDb = _unitOfWork.Repository<Cliente>().Consulta().FirstOrDefault(c => c.ClienteId == EliminarPorID);
+            if (clienteInDb != null)
             {
-                _repository.Eliminar(RegistroInDB);
-                return 1;
+                _unitOfWork.Repository<Cliente>().Eliminar(clienteInDb);
+                return _unitOfWork.Guardar();
             }
             return 0;
         }

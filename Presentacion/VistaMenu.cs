@@ -47,7 +47,7 @@ namespace MarketOnline
 
         private void listadoDeClientesToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            VistaCliente vista = new VistaCliente();
+            VistaDeClientes vista = new VistaDeClientes();
             vista.MdiParent = this;
             vista.Show();
         }
@@ -55,6 +55,27 @@ namespace MarketOnline
         private void listadoDeProductosToolStripMenuItem_Click(object sender, EventArgs e)
         {
             VistaProductos vista = new VistaProductos();
+            vista.MdiParent = this;
+            vista.Show();
+        }
+
+        private void pedidosToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            VistaPedidos vista = new VistaPedidos();
+            vista.MdiParent = this;
+            vista.Show();
+        }
+
+        private void detallesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            VistaPedidoDetalle vista = new VistaPedidoDetalle();
+            vista.MdiParent = this;
+            vista.Show();
+        }
+
+        private void facturasToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            VistaFacturas vista = new VistaFacturas();
             vista.MdiParent = this;
             vista.Show();
         }

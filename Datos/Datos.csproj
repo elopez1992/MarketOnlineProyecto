@@ -43,6 +43,7 @@
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -63,11 +64,17 @@
     <Compile Include="BaseDatos\Modelos\Producto.cs" />
     <Compile Include="BaseDatos\Modelos\UnidadMedida.cs" />
     <Compile Include="Core\IRepository.cs" />
+    <Compile Include="Core\IUnitOfWork.cs" />
     <Compile Include="Core\Repository.cs" />
+    <Compile Include="Core\UnitOfWork.cs" />
     <Compile Include="DCategorias.cs" />
     <Compile Include="DClientes.cs" />
     <Compile Include="DCondicionPago.cs" />
+    <Compile Include="DFactura.cs" />
+    <Compile Include="DFacturaDetalles.cs" />
     <Compile Include="DGrupoDescuentos.cs" />
+    <Compile Include="DPedido.cs" />
+    <Compile Include="DPedidoDetalle.cs" />
     <Compile Include="DProductos.cs" />
     <Compile Include="DUnidadMedida.cs" />
     <Compile Include="Migrations\202403200410114_AddTablaCategoria.cs" />
@@ -110,6 +117,10 @@
     <Compile Include="Migrations\202404030248303_AdicionFacturaDetalle.Designer.cs">
       <DependentUpon>202404030248303_AdicionFacturaDetalle.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202404100451274_AgregarColumnasProductoYCantidad.cs" />
+    <Compile Include="Migrations\202404100451274_AgregarColumnasProductoYCantidad.designer.cs">
+      <DependentUpon>202404100451274_AgregarColumnasProductoYCantidad.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -147,6 +158,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202404030248303_AdicionFacturaDetalle.resx">
       <DependentUpon>202404030248303_AdicionFacturaDetalle.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202404100451274_AgregarColumnasProductoYCantidad.resx">
+      <DependentUpon>202404100451274_AgregarColumnasProductoYCantidad.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
