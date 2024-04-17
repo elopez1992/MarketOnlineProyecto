@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 using System.ComponentModel.DataAnnotations;
 using Datos.Core;
 using System.Data.Entity;
+using System.Windows.Forms;
 
 namespace Datos
 {
@@ -68,12 +69,19 @@ namespace Datos
 
         public int EliminarGrupoDescuento(int EliminarPorID)
         {
-            var registroInDb = _unitOfWork.Repository<GrupoDescuento>().Consulta().FirstOrDefault(c => c.GrupoDescuentoId == EliminarPorID);
-            if (registroInDb != null)
+            try
             {
-                _unitOfWork.Repository<GrupoDescuento>().Eliminar(registroInDb);
-                return _unitOfWork.Guardar();
+                var registroInDb = _unitOfWork.Repository<GrupoDescuento>().Consulta().FirstOrDefault(c => c.GrupoDescuentoId == EliminarPorID);
+                if (registroInDb != null)
+                {
+                    _unitOfWork.Repository<GrupoDescuento>().Eliminar(registroInDb);
+                    return _unitOfWork.Guardar();
+                }
             }
+            catch(Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }            
             return 0;
         }
     }

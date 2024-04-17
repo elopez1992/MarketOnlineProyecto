@@ -9,6 +9,7 @@ using System.Linq;
 using System.Runtime.Remoting.Contexts;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace Datos
 {
@@ -98,11 +99,18 @@ namespace Datos
 
         public int Eliminar(int EliminarPorID)
         {
-            var registroInDb = _unitOfWork.Repository<Categoria>().Consulta().FirstOrDefault(c => c.CategoriaId == EliminarPorID);
-            if (registroInDb != null)
+            try 
             {
-                _unitOfWork.Repository<Categoria>().Eliminar(registroInDb);
-                return _unitOfWork.Guardar();
+                var registroInDb = _unitOfWork.Repository<Categoria>().Consulta().FirstOrDefault(c => c.CategoriaId == EliminarPorID);
+                if (registroInDb != null)
+                {
+                    _unitOfWork.Repository<Categoria>().Eliminar(registroInDb);
+                    return _unitOfWork.Guardar();
+                }                
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
             }
             return 0;
         }
